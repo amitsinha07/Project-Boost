@@ -212,8 +212,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231147073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.95, y: 0.99, z: 0}
-  m_LocalScale: {x: 2.1904, y: 2.1904, z: 6.4718375}
+  m_LocalPosition: {x: -0.95, y: 1.98, z: 0}
+  m_LocalScale: {x: 2.1904, y: 6.0772643, z: 6.4718375}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -400,17 +400,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2870529203706922888, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 50759128e17a347caa70d672274c77dd, type: 2}
     - target: {fileID: 2870529203706922890, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
       propertyPath: m_Name
       value: LandingPad
       objectReference: {fileID: 0}
+    - target: {fileID: 2870529203706922890, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
+      propertyPath: m_TagString
+      value: Finish
+      objectReference: {fileID: 0}
     - target: {fileID: 2870529203706922894, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.67
+      value: 7.21
       objectReference: {fileID: 0}
     - target: {fileID: 2870529203706922894, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -461,13 +461,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2870529203706922888, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e689262382274505ab7a6b006e6ae0b, type: 2}
     - target: {fileID: 2870529203706922890, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
       propertyPath: m_Name
       value: LaunchPad
       objectReference: {fileID: 0}
     - target: {fileID: 2870529203706922894, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.78
+      value: -8.93
       objectReference: {fileID: 0}
     - target: {fileID: 2870529203706922894, guid: 92478d48d611046db82dc91a7d3dbc76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -518,29 +522,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1822355045, guid: 09eaf0ecb12c04fb3ad433d02273cde5, type: 3}
-      propertyPath: m_Constraints
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 1822355045, guid: 09eaf0ecb12c04fb3ad433d02273cde5, type: 3}
-      propertyPath: m_Drag
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1822355049, guid: 09eaf0ecb12c04fb3ad433d02273cde5, type: 3}
-      propertyPath: mainThrust
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1822355049, guid: 09eaf0ecb12c04fb3ad433d02273cde5, type: 3}
-      propertyPath: rotationThrust
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 4238376424426816932, guid: 09eaf0ecb12c04fb3ad433d02273cde5, type: 3}
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
     - target: {fileID: 4238376424426816936, guid: 09eaf0ecb12c04fb3ad433d02273cde5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.72
+      value: -8.86
       objectReference: {fileID: 0}
     - target: {fileID: 4238376424426816936, guid: 09eaf0ecb12c04fb3ad433d02273cde5, type: 3}
       propertyPath: m_LocalPosition.y
