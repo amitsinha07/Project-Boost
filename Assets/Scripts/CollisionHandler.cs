@@ -5,23 +5,57 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+
+    [SerializeField] AudioClip crashSound;
+    [SerializeField] AudioClip successSound;
+    [SerializeField] float levelLoadDelay = 1f;
+
+    AudioSource audioSource;
+    bool isTransitioning = false;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void OnCollisionEnter(Collision collision)
     {
+        if (isTransitioning) return;
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
                 Debug.Log("This thing is friendly");
                 break;
             case "Finish":
-                LoadNextLevel();
-                break;
-            case "Fuel":
-                Debug.Log("Picked Fuel");
+                StartSuccessSequence();
                 break;
             default:
-                ReloadLevel();
+                StartCrashSequence();
                 break;
         }
+    }
+
+    void StartCrashSequence()
+    {
+        //todo add SFX on crash
+        //todo add particle effect on crash
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(crashSound);
+        GetComponent<Movement>().enabled = false;
+        Invoke("ReloadLevel", levelLoadDelay);
+    }
+
+    void StartSuccessSequence()
+    {
+        //todo add SFX on Success
+        //todo add particle effect on Success
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(successSound);
+        GetComponent<Movement>().enabled = false;
+        Invoke("LoadNextLevel", levelLoadDelay);
     }
 
     void LoadNextLevel()

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
     [SerializeField] float mainThrust = 100f;
     [SerializeField] float rotationThrust = 10f;
+    [SerializeField] AudioClip mainEngine;
+
     Rigidbody rb;
     AudioSource audiosource;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +33,8 @@ public class Movement : MonoBehaviour
         {
             rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
 
-            if(!audiosource.isPlaying)
-                audiosource.Play();
+            if (!audiosource.isPlaying)
+                audiosource.PlayOneShot(mainEngine);
         }
        
     }
@@ -49,8 +53,8 @@ public class Movement : MonoBehaviour
 
     void ApplyRotation(float rotationThisFrame)
     {
-        rb.freezeRotation = true;
+        //rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
-        rb.freezeRotation = false;
+        //rb.freezeRotation = false;
     }
 }
