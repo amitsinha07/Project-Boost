@@ -5,9 +5,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    [SerializeField] float mainThrust = 100f;
-    [SerializeField] float rotationThrust = 10f;
+    [SerializeField] float mainThrust = 1000f;
+    [SerializeField] float rotationThrust = 100f;
     [SerializeField] AudioClip mainEngine;
+    [SerializeField] ParticleSystem boostParticle;
 
     Rigidbody rb;
     AudioSource audiosource;
@@ -31,30 +32,41 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-
-            if (!audiosource.isPlaying)
-                audiosource.PlayOneShot(mainEngine);
+            moveUp();
+        }
+        else
+        {
+            boostParticle.Stop();
         }
        
     }
 
+    void moveUp()
+    {
+        rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        boostParticle.Play();
+        if (!audiosource.isPlaying)
+            audiosource.PlayOneShot(mainEngine);
+    }
+
     void ProcessRotation()
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-            ApplyRotation(rotationThrust);
-        }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             ApplyRotation(-rotationThrust);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            ApplyRotation(rotationThrust);
         }
     }
 
     void ApplyRotation(float rotationThisFrame)
     {
-        //rb.freezeRotation = true;
+        rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
-        //rb.freezeRotation = false;
+        rb.freezeRotation = false;
     }
+
+
 }
