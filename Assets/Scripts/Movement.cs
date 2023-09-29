@@ -10,9 +10,15 @@ public class Movement : MonoBehaviour
     [SerializeField] AudioClip mainEngine;
     [SerializeField] ParticleSystem boostParticle;
 
+    public static Movement instance;
+ 
     Rigidbody rb;
     AudioSource audiosource;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +47,7 @@ public class Movement : MonoBehaviour
        
     }
 
-    void moveUp()
+    public void moveUp()
     {
         rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         boostParticle.Play();
@@ -61,7 +67,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void ApplyRotation(float rotationThisFrame)
+    public void ApplyRotation(float rotationThisFrame)
     {
         rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
