@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Movement : MonoBehaviour
     [SerializeField] float rotationThrust = 100f;
     [SerializeField] AudioClip mainEngine;
     [SerializeField] ParticleSystem boostParticle;
+    [SerializeField] Button LeftControl;
+    [SerializeField] Button RightControl;
 
     public static Movement instance;
  
@@ -23,8 +26,15 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Start called");
         rb = GetComponent<Rigidbody>();
         audiosource = GetComponent<AudioSource>();
+
+        //if(LeftControl != null)
+        //    LeftControl.onClick.AddListener(() => ApplyRotation(-rotationThrust));
+
+        //if(RightControl != null)
+        //    RightControl.onClick.AddListener(() => ApplyRotation(-rotationThrust));
     }
 
     // Update is called once per frame
@@ -49,6 +59,7 @@ public class Movement : MonoBehaviour
 
     public void moveUp()
     {
+        Debug.Log("Move up");
         rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         boostParticle.Play();
         if (!audiosource.isPlaying)

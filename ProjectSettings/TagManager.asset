@@ -7,6 +7,8 @@ TagManager:
   - Friendly
   - Fuel
   - UI
+  - RightControl
+  - LeftControl
   layers:
   - Default
   - TransparentFX

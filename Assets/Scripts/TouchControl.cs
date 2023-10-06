@@ -8,28 +8,21 @@ public class TouchControl : MonoBehaviour
 
     private void Update()
     {
-        // Check for touch events
-        for (int i = 0; i < Input.touchCount; i++)
+        if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(i);
+            Touch touch = Input.GetTouch(0);
 
-            // Check if a finger started touching the screen
             if (touch.phase == TouchPhase.Began)
             {
-                isTouching = true;
-                // Call your function when touch begins
-                Movement.instance.moveUp();
-            }
-            // Check if a finger is still touching the screen
-            else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-            {
-                // Call your function while touch is active
-                Movement.instance.moveUp();
-            }
-            // Check if a finger is removed from the screen
-            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-            {
-                isTouching = false;
+                // Check if the touch hits the panel's collider
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject)
+                {
+                    // Call the moveUp() function when the panel is touched
+                    Movement.instance.moveUp();
+                }
             }
         }
     }
