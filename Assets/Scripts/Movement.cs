@@ -23,18 +23,11 @@ public class Movement : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Start called");
         rb = GetComponent<Rigidbody>();
         audiosource = GetComponent<AudioSource>();
-
-        //if(LeftControl != null)
-        //    LeftControl.onClick.AddListener(() => ApplyRotation(-rotationThrust));
-
-        //if(RightControl != null)
-        //    RightControl.onClick.AddListener(() => ApplyRotation(-rotationThrust));
     }
 
     // Update is called once per frame
@@ -80,6 +73,7 @@ public class Movement : MonoBehaviour
 
     public void ApplyRotation(float rotationThisFrame)
     {
+        Debug.Log("Rotation Function Called");
         rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
         rb.freezeRotation = false;
